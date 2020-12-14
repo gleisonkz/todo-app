@@ -1,11 +1,4 @@
-import {
-  convertFormValuesToObj,
-  isEmail,
-  isEmpty,
-  setInvalidFor,
-  setValidFor,
-  validateForm,
-} from "./functions/form-validations";
+import { isEmail, isEmpty, setInvalidFor, setValidFor, validateForm } from "./functions/form-validations";
 import "./style.scss";
 
 const $loginForm: any = document.querySelector("form");
@@ -71,12 +64,4 @@ $loginForm.addEventListener("submit", (event: Event) => {
   event.preventDefault();
   const formState = validateForm($inputs);
   if (formState === false) return;
-
-  const userObj = convertFormValuesToObj($loginForm) as UserLogin;
-  console.log(userObj);
 });
-
-interface UserLogin {
-  email: string;
-  password: string;
-}

@@ -26,10 +26,10 @@ function validateForm($elements: HTMLInputElement[]): boolean {
   return $elements.every(($element) => $element.dataset.isValid === "true");
 }
 
-export function convertFormValuesToObj($form: HTMLFormElement): Object {
+export function convertFormValuesToObj<T>($form: HTMLFormElement): T {
   return Object.values($form.elements).reduce((obj: Object, field: HTMLFormElement) => {
     field.name && (obj[field.name] = field.value);
-    return obj;
+    return obj as any;
   }, {});
 }
 
