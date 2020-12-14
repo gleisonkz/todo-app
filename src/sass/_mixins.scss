@@ -1,0 +1,44 @@
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+@mixin size($width, $height: $width) {
+  width: #{$width}px;
+  height: #{$height}px;
+}
+
+@mixin reset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+@mixin button-pressed {
+  outline: none;
+  transition: transform 0.2s;
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+@mixin button-disabled {
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #e5e5e5;
+    pointer-events: none;
+  }
+}
+
+@mixin base-button {
+  @include button-pressed;
+  @include button-disabled;
+  user-select: none;
+}

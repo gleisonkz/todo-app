@@ -1,0 +1,36 @@
+// ==========================================================================
+// Measures
+// ==========================================================================
+
+$global-max-width: 1200px;
+$global-font-size: 18px;
+$global-line-height: 1.5px;
+$global-radius: 10px;
+
+// ==========================================================================
+// Font
+// ==========================================================================
+
+$font-primary:'Roboto', sans-serif;
+$font-secondary: Arial, Helvetica, sans-serif;
+
+// ==========================================================================
+// Colors
+// ==========================================================================
+
+$color-primary: #{"var(--color-primary)"};
+$color-background: #{"var(--color-background)"};
+$color-text: #{"var(--color-text)"};
+$color-title-text: #{"var(--color-title-text)"};
+
+$color-panel-bg: #{"var(--color-panel-bg)"};
+$color-panel-text: #{"var(--color-panel-text)"};
+
+$project-colors: (
+  "primary": #33FFA9,
+  "background": #23272D,
+  "title-text": rgb(255, 255, 255),
+  "text": #65686C,
+  "panel-bg": #404348,
+//   "panel-text":  #65686C,
+);
