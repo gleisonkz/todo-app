@@ -1,3 +1,4 @@
+import { Validators } from "../../classes/validators";
 import {
   convertFormValuesToObj,
   isEmail,
@@ -6,6 +7,7 @@ import {
   setValidFor,
   validateForm,
 } from "../../functions/form-validations";
+import { Validator } from "../../models/validator";
 import "../../style.scss";
 import "./register.scss";
 
@@ -20,24 +22,16 @@ const $inputs = [...$registerForm.querySelectorAll("input")];
 /* ========================================================================== */
 
 $userName.addEventListener("keyup", () => {
-  const userNameValue = $userName.value;
-  const expectations = [
-    {
-      expect: () => userNameValue && userNameValue.length < 2,
-      action: () => setInvalidFor($userName, "mínimo de 2 caracteres"),
-    },
-    {
-      expect: () => isEmpty(userNameValue),
-      action: () => setInvalidFor($userName, "campo obrigatório"),
-    },
+  const validators: Validator[] = [
+    Validators.validate($userName).required(),
+    Validators.validate($userName).minLength(2),
     {
       expect: () => true,
       action: () => setValidFor($userName),
     },
   ];
-
-  const expected = expectations.find((expectation) => expectation.expect());
-  expected.action();
+  const validator = validators.find((validator: Validator) => validator.expect());
+  validator.action();
 });
 
 $email.addEventListener("keyup", () => {
