@@ -1,4 +1,8 @@
-import { isEmail, isEmpty, setInvalidFor, setValidFor, validateForm } from "./functions/form-validations";
+import { isEmail } from "./functions/is-email";
+import { isEmpty } from "./functions/is-empty";
+import { setInvalidFor } from "./functions/set-invalid-for";
+import { setValidFor } from "./functions/set-valid-for";
+import { validateForm } from "./functions/validate-form";
 import "./style.scss";
 
 const $loginForm: any = document.querySelector("form");

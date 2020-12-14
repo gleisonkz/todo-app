@@ -1,8 +1,11 @@
-import { isEmpty, setInvalidFor, setValidFor } from "../functions/form-validations";
+import { isEmail } from "../functions/is-email";
+import { isEmpty } from "../functions/is-empty";
+import { setInvalidFor } from "../functions/set-invalid-for";
+import { setValidFor } from "../functions/set-valid-for";
 import { Validator } from "../models/validator";
 
 export class Validators {
-  validators: Validator[];
+  validators: Validator[] = [];
 
   constructor(private $element: HTMLInputElement) {
     this.$element.addEventListener("keyup", () => {
@@ -43,10 +46,19 @@ export class Validators {
     return this;
   }
 
+  validEmail(): Validators {
+    this.validators.unshift({
+      expect: () => this.$element.value && isEmail(this.$element.value),
+      action: () => setInvalidFor(this.$element, `email inválido`),
+    });
+
+    return this;
+  }
+
   match($targetElement: HTMLInputElement) {
     this.validators.unshift({
       expect: () => this.$element.value !== $targetElement.value,
-      action: () => setInvalidFor($targetElement, `as senhas não conferem`),
+      action: () => setInvalidFor(this.$element, `as senhas não conferem`),
     });
 
     return this;
